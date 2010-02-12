@@ -1,0 +1,37 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: ComCom
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: com_com
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields: {  }
+      list:
+        display:
+          - =nom
+          - communes_list
+          - created_at
+          - updated_at
+        sort:
+          - created_at
+          - desc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: false
+      filter:
+        display:
+          - id
+          - nom
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [nom, communes_list]
+        class: ComComAdminForm
+        fields: {  }
+      edit: ~
+      new: ~

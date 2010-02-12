@@ -1,0 +1,37 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: Vue
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: vue
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields: {  }
+      list:
+        display:
+          - =nom
+          - photos_list
+          - created_at
+          - updated_at
+        sort:
+          - position
+          - asc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: true
+      filter:
+        display:
+          - id
+          - nom
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [nom, photos_list]
+        class: VueAdminForm
+        fields: {  }
+      edit: ~
+      new: ~

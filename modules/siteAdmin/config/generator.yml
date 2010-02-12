@@ -1,0 +1,46 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: Site
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: site
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields: {  }
+      list:
+        display:
+          - =nom
+          - commune_id
+          - lieu_dit
+          - route
+          - photos_list
+          - created_at
+          - updated_at
+        sort:
+          - created_at
+          - desc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: false
+      filter:
+        display:
+          - id
+          - commune_id
+          - nom
+          - lieu_dit
+          - route
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [nom, commune_id]
+          Lieu: [lieu_dit, route]
+          Photos: [photos_list]
+          Carte: [_carte]
+        class: SiteAdminForm
+        fields: {  }
+      edit: ~
+      new: ~

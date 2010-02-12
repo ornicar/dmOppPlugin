@@ -1,0 +1,10 @@
+dmOppPlugin
+=================
+
+The `dmOppPlugin` allows to manage a "Observatoire Photographique du Paysage".
+This plugin is intended to be used in France.
+Only works with [Diem 5.0](http://diem-project.org/) installed.
+Requires dmGoogleMapPlugin.
+
+Documentation
+-------------

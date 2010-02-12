@@ -1,0 +1,55 @@
+div.dm_opp_global_map {
+  -moz-box-shadow: 0 0 7px #000;
+}
+
+.interets_wrap {
+}
+
+.interets {
+	width: 100%;
+}
+
+.interets li {
+  width: 31%;
+  float: left;
+  padding: 1%;
+  height: 2em;
+}
+
+.interets li.even {
+  background: #F1F5FE;
+}
+
+.interets li select {
+  float: right;
+}
+
+ul.exports li {
+  display: block;
+  height: 32px;
+  font-weight: bold;
+  padding-left: 38px;
+}
+
+ul.exports li a {
+  margin-top: 5px;
+  display: block;
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+ul.exports li.data {
+  background: url(../images/data_out.png) top left no-repeat;
+  height: 70px;
+  display: block;
+}
+
+ul.exports li.media {
+  background: url(../images/folder_out.png) top left no-repeat;
+}
+
+div.gmap {
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}

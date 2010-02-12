@@ -1,0 +1,37 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: Element
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: element
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields: {  }
+      list:
+        display:
+          - =nom
+          - created_at
+          - updated_at
+        sort:
+          - position
+          - asc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: true
+      filter:
+        display:
+          - id
+          - nom
+          - created_at
+          - updated_at
+          - slug
+      form:
+        display:
+          Others: [nom]
+        class: ElementAdminForm
+        fields: {  }
+      edit: ~
+      new: ~

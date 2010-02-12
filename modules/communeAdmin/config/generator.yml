@@ -1,0 +1,47 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: Commune
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: commune
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields:
+        com_com_id:
+          label:    "Communauté de communes"
+      list:
+        display:
+          - =nom
+          - code_insee
+          - code_postal
+          - com_com_id
+          - sites_list
+          - created_at
+          - updated_at
+        sort:
+          - created_at
+          - desc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: false
+      filter:
+        display:
+          - id
+          - com_com_id
+          - nom
+          - code_insee
+          - code_postal
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [nom, com_com_id]
+          Codes: [ code_postal, code_insee ]
+          Sites: [ sites_list ]
+        class: CommuneAdminForm
+        fields: {  }
+      edit: ~
+      new: ~

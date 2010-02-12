@@ -1,0 +1,30 @@
+OPP:
+      
+  Territoire:
+
+    dmOpp:
+      name:       "Carte | Carte"
+
+    comCom:
+      name:       "Communauté de communes | Communautés de communes"
+
+    commune:
+      parent:     comCom
+
+    site:
+      parent:     commune
+    
+  Observatoire:
+  
+    photo:
+      parent:     site
+    
+    element:
+      name:       Elément
+    
+    thematique:
+      page:       false
+      name:       "Thématique"
+    
+    vue:
+      name:       "Type de vue | Types de vue"

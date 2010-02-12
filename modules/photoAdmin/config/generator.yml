@@ -1,0 +1,96 @@
+generator:
+  class: dmAdminDoctrineGenerator
+  param:
+    model_class: Photo
+    theme: dmAdmin
+    non_verbose_templates: true
+    with_show: false
+    route_prefix: photo
+    with_doctrine_route: false
+    config:
+      actions: ~
+      fields:
+        thematiques_list:
+          label: Thématiques
+        is_active:
+          label: Active
+        is_panoramique:
+          label: Panoramique
+        date:
+          help: "Date précise, si elle est connue"
+        annee:
+          help: "Date approximative, si on ne connait pas la date précise. Exemple : 1950 ou 1930-1950"
+        heure:
+          help: "Exemple : 11h20"
+        focale:
+          help: "En mm. Exemple : 18"
+        hauteur:
+          label: "Hauteur de l'objectif"
+          help: "En cm. Exemple : 50"
+        interets:
+          label: false
+          is_big: true
+        orientation:
+          help: "En degrés depuis le nord (0 à 359)"
+        inclinaison:
+          help: "Inclinaison verticale en degrés (-90 bas à +90 haut)"
+        position_precision:
+          label: "Précision"
+          help: "Précision de la position en mètres"
+        latitude:
+          help: "Degrés décimaux / méridien de Greenwich"
+        longitude:
+          help: "Degrés décimaux / méridien de Greenwich"
+      list:
+        display:
+          - =nom
+          - =image_id
+          - site_id
+          - thematiques_list
+          - _date
+          - commentaire
+          - _created_at
+          - _updated_at
+        sort:
+          - position
+          - asc
+        table_method: getAdminListQuery
+        table_count_method: ~
+        sortable: false
+      filter:
+        display:
+          - id
+          - is_active
+          - is_panoramique
+          - site_id
+          - image_id
+          - date
+          - annee
+          - focale
+          - vue_id
+          - orientation
+          - inclinaison
+          - latitude
+          - longitude
+          - position_precision
+          - hauteur
+          - emplacement_id
+          - heure
+          - commentaire
+          - created_by
+          - updated_by
+          - created_at
+          - updated_at
+      form:
+        display:
+          NONE: [ nom, _print, site_id, _open ]
+          Image: [image_id_form, image_id_view]
+          "Eléments présents sur la photo": [ _interets ]
+          "Thématiques et Commentaire": [thematiques_list, commentaire]
+          "Date": [date, annee, heure]
+          "Prise de vue": [focale, vue_id, hauteur, orientation, inclinaison]
+          Emplacement: [latitude, longitude, position_precision, _empty_, emplacement_id_form, emplacement_id_view]
+        class: PhotoAdminForm
+        fields: {  }
+      edit: ~
+      new: ~

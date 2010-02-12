@@ -1,0 +1,160 @@
+ComCom:
+  actAs:
+    DmVersionable:
+    Timestampable:
+  columns:
+    nom:                    { type: string(255), notnull: true }
+
+Commune:
+  actAs:
+    DmVersionable:
+    Timestampable:
+  columns:
+    com_com_id:             { type: integer, notnull: false }
+    nom:                    { type: string(255), notnull: true }
+    code_insee:             { type: string(5), notnull: true, unique: true }
+    code_postal:            { type: string(5), notnull: true }
+  relations:
+    ComCom:
+      class:                ComCom
+      onDelete:             SET NULL
+      foreignAlias:         Communes
+
+Site:
+  actAs:
+    DmVersionable:
+    Timestampable:
+  columns:
+    commune_id:             { type: integer, notnull: false }
+    nom:                    { type: string(255), notnull: true }
+    lieu_dit:               { type: string(255) }
+    route:                  { type: string(255) }
+  indexes:
+    commune_site:
+      fields:               [ commune_id, nom ]
+      type:                 unique
+  relations:
+    Commune:
+      onDelete:             SET NULL
+      foreignAlias:         Sites
+
+Photo:
+  actAs:
+    DmVersionable:
+    Sortable:
+    Timestampable:
+  columns:
+    site_id:                { type: integer, notnull: false }
+    image_id:               { type: integer, notnull: true }
+    nom:                    { type: string(255) }
+    date:                   { type: date }
+    annee:                  { type: string(255) }
+    focale:                 { type: integer(2), unsigned: true }
+    vue_id:                 { type: integer }
+    # en degrés depuis le nord (0 à +359)
+    orientation:            { type: integer(2), unsigned: true }
+    # inclinaison verticale de la prise de vue en degrés (-90 à +90)
+    inclinaison:            { type: integer(2) }
+    # en degrés décimaux par rapport au méridien de Greenwich
+    latitude:               { type: decimal(8), scale: 4, notnull: true }
+    # en degrés décimaux par rapport au méridien de Greenwich
+    longitude:              { type: decimal(8), scale: 4, notnull: true }
+    # Précision de la position en mètres
+    position_precision:     { type: integer(2), notnull: true, default: 10, unsigned: true }
+    # Hauteur de l'objectif en cm
+    hauteur:                { type: integer(2), unsigned: true }
+    emplacement_id:         { type: integer }
+    heure:                  { type: string(255) }
+    is_active:              { type: boolean, notnull: true, default: true }
+    is_panoramique:         { type: boolean, notnull: true, default: false }
+    commentaire:            { type: clob }
+    created_by:             { type: integer }
+    updated_by:             { type: integer }
+  relations:
+    Site:
+      class:                Site
+      onDelete:             SET NULL
+      foreignAlias:         Photos
+    Image:
+      class:                DmMedia
+      local:                image_id
+      foreign:              id
+      onDelete:             RESTRICT
+    Emplacement:
+      class:                DmMedia
+      local:                emplacement_id
+      foreign:              id
+      onDelete:             SET NULL
+    Vue:
+      onDelete:             SET NULL
+    Thematiques:
+      class:                Thematique
+      refClass:             PhotoThematique
+    CreatedBy:
+      class:                DmUser
+      local:                created_by
+      foreign:              id
+      onDelete:             SET NULL
+    UpdatedBy:
+      class:                DmUser
+      local:                updated_by
+      foreign:              id
+      onDelete:             SET NULL
+    Vue:
+      onDelete:             SET NULL
+      foreignAlias:         Photos
+
+PhotoThematique:
+  columns:
+    photo_id:               { type: integer, primary: true }
+    thematique_id:          { type: integer, primary: true }
+  relations:
+    Photo:
+      onDelete:             CASCADE
+    Thematique:
+      onDelete:             CASCADE
+
+Thematique:
+  actAs:
+    DmVersionable:
+    Sortable:
+    Timestampable:
+  columns:
+    nom:                    { type: string(255), notnull: true, unique: true }
+  relations:
+    Photos:
+      class:                Photo
+      refClass:             PhotoThematique
+
+Vue:
+  actAs:
+    DmVersionable:
+    Sortable:
+    Timestampable:
+  columns:
+    nom:                    { type: string(255), notnull: true, unique: true }
+
+Interet:
+  columns:
+    photo_id:               { type: integer, notnull: true }
+    element_id:             { type: integer, notnull: true }
+    valeur:                 { type: enum, values: [ "peu visible", "visible", "important" ], notnull: true }
+  indexes:
+    photo_element:
+      fields:               [ photo_id, element_id ]
+      type:                 unique
+  relations:
+    Photo:
+      onDelete:             CASCADE
+      foreignAlias:         Interets
+    Element:
+      onDelete:             CASCADE
+
+Element:
+  actAs:
+    DmVersionable:
+    Sortable:
+    Timestampable:
+    Sluggable:
+  columns:
+    nom:                    { type: string(255), notnull: true, unique: true }

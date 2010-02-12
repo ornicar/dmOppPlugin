@@ -1,0 +1,7 @@
+all:
+
+  dmOpp:
+
+    globalMap:
+      center:     [ 48.49, -2.68 ]
+      zoom:       10

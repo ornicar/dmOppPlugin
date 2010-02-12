@@ -1,0 +1,21 @@
+.center {
+  text-align: center;
+}
+
+.title {
+	margin-top: 1em;
+	font-size:1.5em;
+}
+
+hr {
+	height: 1px;
+}
+
+hr.soft {
+  margin: -1em 0 0.4em 0;
+}
+
+div.dm_google_map {
+  height: 400px;
+  overflow: hidden;
+}
