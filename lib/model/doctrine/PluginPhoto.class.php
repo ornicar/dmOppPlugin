@@ -18,19 +18,19 @@ abstract class PluginPhoto extends BasePhoto
     return array($this->latitude, $this->longitude);
   }
 
-	public function getBestDate()
-	{
-	  return $this->date ? $this->date : $this->annee;
-	}
+  public function getBestDate()
+  {
+    return $this->date ? $this->date : $this->annee;
+  }
 
-	public function __toString()
-	{
-	  return $this->get('nom') ? $this->get('nom') : 'Photo '.$this->get('id');
-	}
+  public function __toString()
+  {
+    return $this->get('nom') ? $this->get('nom') : 'Photo '.$this->get('id');
+  }
   
-	public function preSave($event)
-	{
-		parent::preSave($event);
+  public function preSave($event)
+  {
+    parent::preSave($event);
 
     if($user = $this->getService('user'))
     {
@@ -41,5 +41,5 @@ abstract class PluginPhoto extends BasePhoto
 
       $this->updatedBy = $user->getUserId();
     }
-	}
+  }
 }
