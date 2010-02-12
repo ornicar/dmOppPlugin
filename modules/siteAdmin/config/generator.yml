@@ -39,7 +39,6 @@ generator:
           NONE: [nom, commune_id]
           Lieu: [lieu_dit, route]
           Photos: [photos_list]
-          Carte: [_carte]
         class: SiteAdminForm
         fields: {  }
       edit: ~
