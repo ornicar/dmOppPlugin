@@ -14,7 +14,7 @@ class dmOppAdminActions extends dmAdminBaseActions
 
     try
     {
-      $command = "cd $webDir && tar -czf $backupFileName uploads/*";
+      $command = "cd $webDir && tar -czf cache/$backupFileName uploads/*";
 
       if(!$this->getService('filesystem')->exec($command))
       {
@@ -27,7 +27,7 @@ class dmOppAdminActions extends dmAdminBaseActions
       return $this->redirectBack();
     }
 
-    return $this->redirect('/'.$backupFileName);
+    return $this->redirect('/cache/'.$backupFileName);
   }
 
 //  public function executeBackupImages(dmWebRequest $request)
