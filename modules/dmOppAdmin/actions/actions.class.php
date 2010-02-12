@@ -104,7 +104,7 @@ class dmOppAdminActions extends dmAdminBaseActions
 
   public function executeBackupMysql(dmWebRequest $request)
   {
-    $backupFile = sfConfig::get('sf_cache_dir').'/'.dmString::slugify(dmConfig::get('site_name')).'_mysql_'.date("Y-m-d-H-i-s").'.sql.gz';
+    $backupFile = sfConfig::get('sf_cache_dir').'/'.dmString::slugify(dmConfig::get('site_name')).'_mysql_'.date("Y-m-d-H-i-s").'.sql';
     
     $connection = dmDb::table('Photo')->getConnection();
     
@@ -113,7 +113,7 @@ class dmOppAdminActions extends dmAdminBaseActions
     $host = preg_replace('/mysql\:host=([-\w]+);.*/i', '$1', $connection->getOption('dsn'));
     $name = preg_replace('/mysql\:host=[-\w]+;dbname=([-\w]+);.*/i', '$1', $connection->getOption('dsn'));
 
-    $command = "mysqldump --opt -h $host -u $user -p$pass $name | gzip > $backupFile";
+    $command = "mysqldump --opt -h $host -u $user -p$pass $name > $backupFile";
     
     if(!$this->getService('filesystem')->execute($command))
     {

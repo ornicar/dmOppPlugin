@@ -8,7 +8,7 @@ $(function() {
   }
 
   var icon = new google.maps.MarkerImage(
-    dm_configuration.relative_url_root+'/dmOppPlugin/images/image-balloon.png',
+    dm_configuration.relative_url_root+'/dmOppPlugin/images/target.png',
     new google.maps.Size(16, 16)
   );
 
@@ -40,8 +40,8 @@ $(function() {
         position:   new google.maps.LatLng(photo.coords[0], photo.coords[1]),
         title:      photo.title,
         clickable:  true,
-        map:        map,
-        icon:       icon
+        map:        map/*,
+        icon:       icon*/
       });
 
       photo.infowindow = new google.maps.InfoWindow({
