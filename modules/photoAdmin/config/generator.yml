@@ -48,7 +48,6 @@ generator:
           - site_id
           - thematiques_list
           - _date
-          - commentaire
           - _created_at
           - _updated_at
         sort:
