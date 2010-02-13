@@ -26,5 +26,5 @@ OPP:
       page:       false
       name:       "Thématique"
     
-    vue:
-      name:       "Type de vue | Types de vue"
+#    vue:
+#      name:       "Type de vue | Types de vue"
