@@ -8,6 +8,11 @@ class dmOppAdminComponents extends dmAdminBaseComponents
     
   }
 
+  public function executeDocs()
+  {
+    $this->medias = dmDb::table('DmMedia')->findByFolderRelPath('doc');
+  }
+
   public function executeGlobalMap(dmWebRequest $request)
   {
     $photos = dmDb::query('Photo p')
