@@ -41,6 +41,8 @@ generator:
           help: "Degrés décimaux / méridien de Greenwich"
         longitude:
           help: "Degrés décimaux / méridien de Greenwich"
+        commentaires:
+          is_big: true
       list:
         display:
           - =nom
@@ -84,11 +86,12 @@ generator:
         display:
           NONE: [ nom, _print, site_id, _open ]
           Image: [image_id_form, image_id_view]
-          "Eléments présents sur la photo": [ _interets ]
-          "Thématiques et Commentaire": [thematiques_list, commentaire]
+          "Thématiques": [thematiques_list]
           "Date": [date, annee, heure]
           "Prise de vue": [focale, hauteur, orientation, inclinaison, is_panoramique]
           Emplacement: [latitude, longitude, position_precision, _empty_, emplacement_id_form, emplacement_id_view]
+          "Eléments présents sur la photo": [ _interets ]
+          "Commentaire": [ commentaire ]
         class: PhotoAdminForm
         fields: {  }
       edit: ~

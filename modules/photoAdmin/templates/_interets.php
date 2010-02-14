@@ -1,6 +1,6 @@
 <?php
 
-echo _open('div.interets_wrap');
+echo _open('div.interets_wrap.clearfix');
 
 echo _open('ul.interets.clearfix');
 
@@ -22,3 +22,8 @@ echo _link('@element?action=new')
 ->target('blank');
 
 echo _close('div');
+
+if($photo->exists())
+{
+  echo _tag('div.text_align_center', _media($photo->Image)->height(400)->method('scale'));
+}
