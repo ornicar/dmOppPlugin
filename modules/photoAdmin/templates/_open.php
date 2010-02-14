@@ -1,5 +1,10 @@
 <?php
 
+if(!$photo->exists())
+{
+  return;
+}
+
 echo £link('dmOppAdmin/index')
 ->param('photo_id', $photo->id)
 ->text(

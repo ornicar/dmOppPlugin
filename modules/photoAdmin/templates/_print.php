@@ -1,5 +1,10 @@
 <?php
 
+if(!$photo->exists())
+{
+  return;
+}
+
 echo £link('photoAdmin/print')
 ->param('id', $photo->id)
 ->text(
