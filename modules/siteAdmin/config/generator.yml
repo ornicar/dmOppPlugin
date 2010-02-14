@@ -15,7 +15,6 @@ generator:
           - =nom
           - commune_id
           - lieu_dit
-          - route
           - photos_list
           - created_at
           - updated_at
