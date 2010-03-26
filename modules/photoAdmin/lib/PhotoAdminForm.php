@@ -38,6 +38,8 @@ class PhotoAdminForm extends BasePhotoForm
     $this->validatorSchema['position_precision']->setOption('min', 0);
     $this->validatorSchema['position_precision']->setOption('max', 10000);
 
+    $this->widgetSchema['site_id']->setOption('order_by', array('nom', 'ASC'));
+
     foreach($this->getElements() as $elementSlug => $element)
     {
       $this->embedForm('interet_'.$elementSlug, $this->getInteretFormForElement($element));
