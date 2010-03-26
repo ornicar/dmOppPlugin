@@ -44,6 +44,8 @@ generator:
         commentaire:
           is_big: true
           label:  commentaires
+        emplacement_id_form:
+          label:  "Emplacement du trépied"
       list:
         display:
           - =nom
