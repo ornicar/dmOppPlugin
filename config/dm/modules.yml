@@ -21,7 +21,10 @@ OPP:
     
     element:
       name:       Elément
-    
+
+    elementCateg:
+      name:       "Catégorie d'éléménts|Catégories d'éléments"
+
     thematique:
       page:       false
       name:       "Thématique"

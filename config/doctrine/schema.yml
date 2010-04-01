@@ -125,6 +125,7 @@ Thematique:
     Photos:
       class:                Photo
       refClass:             PhotoThematique
+      foreignAlias:         Thematiques
 
 Vue:
   actAs:
@@ -158,3 +159,25 @@ Element:
     Sluggable:
   columns:
     nom:                    { type: string(255), notnull: true, unique: true }
+
+ElementCateg:
+  actAs:
+    Sortable:
+    Timestampable:
+  columns:
+    nom:                    { type: string(255), notnull: true, unique: true }
+  relations:
+    Elements:
+      class:                Element
+      refClass:             ElementCategElement
+      foreignAlias:         Categs
+
+ElementCategElement:
+  columns:
+    element_id:             { type: integer, primary: true }
+    element_categ_id:       { type: integer, primary: true }
+  relations:
+    Element:
+      onDelete:             CASCADE
+    ElementCateg:
+      onDelete:             CASCADE

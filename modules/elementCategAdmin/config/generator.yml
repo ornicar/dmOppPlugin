@@ -1,19 +1,21 @@
 generator:
   class: dmAdminDoctrineGenerator
   param:
-    model_class: Element
+    model_class: ElementCateg
     theme: dmAdmin
     non_verbose_templates: true
     with_show: false
-    route_prefix: element
+    route_prefix: element_categ
     with_doctrine_route: false
     config:
       actions: ~
-      fields: {  }
+      fields:
+        elements_list:
+          label: Eléments
       list:
         display:
-          - =nom
-          - categs_list
+          - '=nom'
+          - elements_list
           - created_at
           - updated_at
         sort:
@@ -24,15 +26,14 @@ generator:
         sortable: true
       filter:
         display:
-          - id
           - nom
           - created_at
           - updated_at
-          - slug
       form:
         display:
-          NONE: [nom, categs_list]
-        class: ElementAdminForm
+          NONE: [nom]
+          Eléments: [elements_list]
+        class: ElementCategAdminForm
         fields: {  }
       edit: ~
       new: ~
