@@ -6,12 +6,13 @@ echo _open('ul.interets.clearfix');
 
 foreach($form->getElements() as $elementSlug => $element)
 {
-	$interetForm = $form['interet_'.$elementSlug];
-	echo _tag('li'.toggle('.even'),
-	  $interetForm['id'].
+  $interetForm = $form['interet_'.$elementSlug];
+
+  echo _tag('li'.toggle('.even'), array('class' => $interet->categClasses),
+    $interetForm['id'].
     $interetForm['valeur'].
     $interetForm['valeur']->renderLabel($element->get('nom'))
-	);
+  );
 }
 
 echo _close('ul');

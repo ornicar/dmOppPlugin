@@ -13,4 +13,16 @@
 abstract class PluginInteret extends BaseInteret
 {
 
+  public function getCategClasses()
+  {
+    $categClasses = array();
+
+    foreach($this->get('Categs') as $categ)
+    {
+      $categClasses[] = $categ->get('slug');
+    }
+
+    return implode(' ', $categClasses);
+  }
+
 }
