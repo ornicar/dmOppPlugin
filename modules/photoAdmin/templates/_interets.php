@@ -8,7 +8,7 @@ foreach($form->getElements() as $elementSlug => $element)
 {
   $interetForm = $form['interet_'.$elementSlug];
 
-  echo _tag('li'.toggle('.even'), array('class' => $interet->categClasses),
+  echo _tag('li'.toggle('.even'), array('class' => $element->categClasses),
     $interetForm['id'].
     $interetForm['valeur'].
     $interetForm['valeur']->renderLabel($element->get('nom'))
