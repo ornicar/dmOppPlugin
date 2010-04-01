@@ -157,6 +157,9 @@ Element:
     Sortable:
     Timestampable:
     Sluggable:
+      unique:               true
+      fields:               [nom]
+      canUpdate:            true
   columns:
     nom:                    { type: string(255), notnull: true, unique: true }
 
@@ -164,6 +167,10 @@ ElementCateg:
   actAs:
     Sortable:
     Timestampable:
+    Sluggable:
+      unique:               true
+      fields:               [nom]
+      canUpdate:            true
   columns:
     nom:                    { type: string(255), notnull: true, unique: true }
   relations:
