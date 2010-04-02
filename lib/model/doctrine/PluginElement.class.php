@@ -22,7 +22,7 @@ abstract class PluginElement extends BaseElement
       $categClasses[] = $categ->get('slug');
     }
 
-    return implode(' ', $categClasses);
+    return empty($categClasses) ? 'no-categ' : implode(' ', $categClasses);
   }
 
 }

@@ -1,6 +1,17 @@
 <?php
 
-echo _open('div.interets_wrap.clearfix');
+echo _open('div.interets_wrap.opp_interet_selector.clearfix');
+
+echo _open('ul.element_categs');
+
+echo _tag('li', _tag('a', array('data-slug' => 'no-categ'), 'Non classé'));
+
+foreach(dmDb::query('ElementCateg c')->orderBy('c.nom')->fetchRecords() as $categ)
+{
+  echo _tag('li', _tag('a', array('data-slug' => $categ->slug), $categ->nom));
+}
+
+echo _close('ul');
 
 echo _open('ul.interets.clearfix');
 
@@ -8,10 +19,10 @@ foreach($form->getElements() as $elementSlug => $element)
 {
   $interetForm = $form['interet_'.$elementSlug];
 
-  echo _tag('li'.toggle('.even'), array('class' => $element->categClasses),
+  echo _tag('li', array('class' => $element->categClasses),
     $interetForm['id'].
-    $interetForm['valeur'].
-    $interetForm['valeur']->renderLabel($element->get('nom'))
+    $interetForm['valeur']->renderLabel(_tag('span', $element->get('nom'))).
+    $interetForm['valeur']
   );
 }
 

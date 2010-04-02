@@ -3,6 +3,7 @@ js:
   dmOppPlugin:
 
     map:                  map
+    admin:                admin
 
 css:
 

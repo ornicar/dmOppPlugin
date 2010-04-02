@@ -15,13 +15,18 @@ class simpleInteretForm extends InteretForm
 
     $widgetValeur = $this->widgetSchema['valeur'];
 
-  	$widgetValeur->setOption('choices', array_map('ucfirst', array_merge(
-  	  array(0 => ' '),
+  	$widgetValeur
+    ->setOption('choices', array_map('ucfirst', array_merge(
+  	  array(null => 'Aucun'),
   	  $widgetValeur->getChoices()
-  	)));
-  	
-  	$this->validatorSchema['valeur']->addOption('choices', array_keys($widgetValeur->getChoices()));
-    
+  	)))
+    ->setOption('expanded', true)
+    ->setOption('renderer_class', 'sfWidgetFormSelectRadioFlat');
+
+  	$this->validatorSchema['valeur']
+    ->setOption('choices', array_keys($widgetValeur->getChoices()))
+    ->setOption('required', false);
+
     $this->widgetSchema->setNameFormat('interet_'.$this->getObject()->get('Element')->get('slug').'[%s]');
 
     $this->widgetSchema->setFormFormatterName('list');

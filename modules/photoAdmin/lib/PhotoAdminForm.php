@@ -126,7 +126,10 @@ class PhotoAdminForm extends BasePhotoForm
   {
     if (null === $this->elements)
     {
-      $this->elements = dmDb::query('Element e INDEXBY e.slug')->orderBy('e.nom ASC')->fetchRecords();
+      $this->elements = dmDb::query('Element e INDEXBY e.slug')
+      ->leftJoin('e.Categs c')
+      ->orderBy('e.nom ASC')
+      ->fetchRecords();
     }
 
     return $this->elements;

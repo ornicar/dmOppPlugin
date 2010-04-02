@@ -34,5 +34,6 @@ class dmOppPluginConfiguration extends sfPluginConfiguration
   protected function includeAssets(sfWebResponse $response)
   {
     $response->addStylesheet('dmOppPlugin.admin');
+    $response->addJavascript('dmOppPlugin.admin');
   }
 }
