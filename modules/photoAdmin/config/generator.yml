@@ -38,9 +38,9 @@ generator:
           label: "Précision"
           help: "Précision de la position en mètres"
         latitude:
-          help: "Degrés décimaux par rapport à l'Équateur."
+          help: "Degrés décimaux par rapport à l'Équateur (Ex: 48.4456)"
         longitude:
-          help: "Degrés décimaux par rapport au méridien de Greenwich"
+          help: "Degrés décimaux par rapport au méridien de Greenwich (Ex: -2.7461)"
         commentaire:
           is_big: true
           label:  commentaires
